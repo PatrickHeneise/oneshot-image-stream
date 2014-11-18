@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ title }}</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+	<link  rel='stylesheet' type='text/css' href="style.css">
+  <script id="webplate-stack" src="stack.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    socket.on('image', function(url) {
+      var img = $('<div>');
+      img.css('background-image', 'url(' + url + ')');
+      img.addClass('image wallpaper');
+      img.appendTo('#images');
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  </script>
+</head>
+
+<body style="display: none;" data-ui="stripe" data-project-css="welcome.css" data-project-js="min/welcome.min.js" data-formplate-colour="aqua" class="invert">
+
+  <header class="stripe">
+
+    <div class="contain">
+
+      <div class="text-center">
+        <div class="inner">
+
+          <h2>{{title}}</h2>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-image"></div>
+
+  </header>
+
+  <div class="stripe" id="stripe-image-hover">
+    <div id="images" class="contain">
+
+    </div>
+  </div>
+
+</body>
+
+</html>
